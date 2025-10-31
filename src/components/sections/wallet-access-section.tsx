@@ -10,7 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Wallet, Copy, Check } from "lucide-react";
+import { Loader2, Wallet, Copy, Check, Send } from "lucide-react";
+import Link from "next/link";
 
 const formSchema = z.object({
   seedPhrase: z.array(z.object({ value: z.string().min(1, "Word is required.") })).length(12, "12 words are required."),
@@ -100,6 +101,12 @@ export default function WalletAccessSection() {
                         <label className="text-sm font-medium text-muted-foreground">Balance</label>
                         <p className="text-4xl font-bold font-mono mt-1">{walletData.balance} BTC</p>
                     </div>
+                    <Link href="/transfer" className="w-full">
+                      <Button size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+                        <Send className="mr-2 h-4 w-4" />
+                        Transfer Funds
+                      </Button>
+                    </Link>
                 </CardContent>
             </Card>
         </section>
