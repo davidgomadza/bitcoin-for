@@ -52,6 +52,7 @@ export default function WalletAccessSection() {
         toast({
             title: "Success!",
             description: "Wallet unlocked.",
+            variant: "default",
         });
       } else {
         toast({
@@ -69,6 +70,7 @@ export default function WalletAccessSection() {
     if (walletData) {
       navigator.clipboard.writeText(walletData.address);
       setHasCopied(true);
+      toast({ title: "Copied!", description: "Wallet address copied to clipboard." });
       setTimeout(() => setHasCopied(false), 2000);
     }
   };
@@ -76,19 +78,19 @@ export default function WalletAccessSection() {
   if (isUnlocked && walletData) {
     return (
         <section id="wallet-access" className="w-full">
-            <div className="text-center mb-8 md:mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Your Genesis Wallet</h2>
+            <div className="text-center mb-12 md:mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold font-mono">Your Genesis Wallet</h2>
             </div>
-            <Card className="max-w-2xl mx-auto shadow-lg bg-primary/5">
+            <Card className="max-w-2xl mx-auto shadow-lg bg-gradient-to-br from-primary/10 to-transparent border-primary/30">
                 <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-2xl font-headline"><Wallet className="h-6 w-6 text-primary"/>Wallet Unlocked</CardTitle>
-                    <CardDescription>For your security, transfer your funds to a personal wallet immediately.</CardDescription>
+                    <CardTitle className="flex items-center gap-3 text-3xl font-mono"><Wallet className="h-8 w-8 text-primary"/>Wallet Unlocked</CardTitle>
+                    <CardDescription className="text-lg">For your security, transfer your funds to a personal wallet immediately.</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-6">
                     <div>
                         <label className="text-sm font-medium text-muted-foreground">Wallet Address</label>
                         <div className="flex items-center gap-2 mt-1">
-                            <Input readOnly value={walletData.address} className="font-mono text-sm"/>
+                            <Input readOnly value={walletData.address} className="font-mono text-base bg-muted/50"/>
                             <Button variant="outline" size="icon" onClick={handleCopy}>
                                 {hasCopied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
                             </Button>
@@ -96,7 +98,7 @@ export default function WalletAccessSection() {
                     </div>
                     <div>
                         <label className="text-sm font-medium text-muted-foreground">Balance</label>
-                        <p className="text-2xl font-bold font-headline mt-1">{walletData.balance} BTC</p>
+                        <p className="text-4xl font-bold font-mono mt-1">{walletData.balance} BTC</p>
                     </div>
                 </CardContent>
             </Card>
@@ -106,18 +108,18 @@ export default function WalletAccessSection() {
 
   return (
     <section id="wallet-access" className="w-full">
-        <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline">Access Your Wallet</h2>
-            <p className="text-muted-foreground mt-2">Enter your 12-word recovery phrase to unlock your funds.</p>
+        <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold font-mono">Access Your Wallet</h2>
+            <p className="text-muted-foreground mt-4 text-lg">Enter your 12-word recovery phrase to unlock your funds.</p>
         </div>
-      <Card className="max-w-3xl mx-auto shadow-lg">
+      <Card className="max-w-3xl mx-auto shadow-lg bg-card/50">
         <CardHeader>
-          <CardTitle className="font-headline">Recovery Phrase</CardTitle>
-          <CardDescription>Enter the 12 words in the correct order.</CardDescription>
+          <CardTitle className="font-mono text-3xl">Recovery Phrase</CardTitle>
+          <CardDescription className="text-lg">Enter the 12 words in the correct order.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {fields.map((field, index) => (
                   <FormField
@@ -126,9 +128,9 @@ export default function WalletAccessSection() {
                     name={`seedPhrase.${index}.value`}
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Word {index + 1}</FormLabel>
+                        <FormLabel className="text-muted-foreground">Word {index + 1}</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder={`#${index+1}`} />
+                          <Input {...field} placeholder={`#${index+1}`} className="font-mono text-base" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -136,7 +138,7 @@ export default function WalletAccessSection() {
                   />
                 ))}
               </div>
-              <Button type="submit" disabled={isLoading} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+              <Button type="submit" disabled={isLoading} size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                 {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                 Unlock Wallet
               </Button>

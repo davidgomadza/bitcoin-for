@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-background",
-      "description": "Abstract digital network background with glowing nodes and connections.",
-      "imageUrl": "https://images.unsplash.com/photo-1603121144201-1b7f945a0c92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhYnN0cmFjdCUyMG5ldHdvcmt8ZW58MHx8fHwxNzYxODc0Njc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract network"
+      "description": "AGT logo, a shimmering blue crystal diamond with sparkles.",
+      "imageUrl": "https://storage.googleapis.com/project-spark-365515-assets/generated/3358055a-3843-4a1b-bb37-13350c9b9866.jpg",
+      "imageHint": "crystal diamond"
     }
   ]
 }

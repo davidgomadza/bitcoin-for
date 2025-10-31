@@ -12,7 +12,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <div className="container mx-auto px-4 space-y-16 md:space-y-24 py-16 md:py-24">
+        <div className="container mx-auto px-4 space-y-24 md:space-y-32 py-24 md:py-32">
             <PricingSection />
             <HowItWorksSection />
             <WalletAccessSection />
