@@ -18,7 +18,7 @@ export default function AgtRewardSection() {
         </CardHeader>
         <CardContent className="space-y-6 text-lg md:text-xl">
           <p>
-            Buying this Bitcoin entitles you to a claim for the cure for death: the <strong className="text-primary font-semibold">AGT (Anti-Gene of Thanatos)</strong>. The amount of BTC you buy is equivalent to the AGT you receive.
+            Buying this Bitcoin entitles you to a claim for the cure for death: the <strong className="text-primary font-semibold">AGT (Advanced GeneticSynthesis Technology)</strong>. The amount of BTC you buy is equivalent to the AGT you receive.
           </p>
           <div className="border-l-4 border-accent pl-4 py-3 bg-accent/10 rounded-r-lg">
             <h4 className="font-bold font-mono text-2xl flex items-center gap-2"><Zap className="h-6 w-6 text-accent" />The Ultimate Goal</h4>
