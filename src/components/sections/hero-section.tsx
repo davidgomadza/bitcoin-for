@@ -28,7 +28,7 @@ export default function HeroSection() {
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       <div className="relative z-10 p-4 max-w-4xl mx-auto -mt-24">
-        <h1 className="text-5xl md:text-7xl font-bold font-mono tracking-tighter">
+        <h1 className="text-5xl md:text-6xl font-bold font-mono tracking-tighter">
           The Genesis of a New Era
         </h1>
         <p className="mt-6 text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto">
