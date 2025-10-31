@@ -1,9 +1,10 @@
 "use client";
 
-import { Bitcoin, Send } from "lucide-react";
+import { Bitcoin, Send, Repeat } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { usePathname } from 'next/navigation';
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const pathname = usePathname();
@@ -24,22 +25,43 @@ export default function Header() {
             Bitcoin Genesis Vault
           </h1>
         </Link>
-        {pathname === '/' && (
-            <nav className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" onClick={() => handleScroll('pricing')}>Offer</Button>
-            <Button variant="ghost" onClick={() => handleScroll('how-it-works')}>How It Works</Button>
-            <Button variant="ghost" onClick={() => handleScroll('wallet-access')}>Access Wallet</Button>
-            <Button variant="ghost" onClick={() => handleScroll('agt-reward')}>AGT Reward</Button>
-            </nav>
-        )}
-        {pathname === '/transfer' && (
-            <Link href="/transfer">
-                <Button variant="outline">
+        <nav className="hidden md:flex items-center gap-2">
+            {pathname === '/' && (
+                <>
+                    <Button variant="ghost" onClick={() => handleScroll('pricing')}>Offer</Button>
+                    <Button variant="ghost" onClick={() => handleScroll('how-it-works')}>How It Works</Button>
+                    <Button variant="ghost" onClick={() => handleScroll('wallet-access')}>Access Wallet</Button>
+                    <Button variant="ghost" onClick={() => handleScroll('agt-reward')}>AGT Reward</Button>
+                </>
+            )}
+             <Link href="/transfer">
+                <Button variant={pathname === '/transfer' ? 'outline' : 'ghost'}>
                     <Send className="mr-2 h-4 w-4"/>
                     Transfer
                 </Button>
             </Link>
-        )}
+            <Link href="/exchange">
+                <Button variant={pathname === '/exchange' ? 'outline' : 'ghost'}>
+                    <Repeat className="mr-2 h-4 w-4"/>
+                    Exchange
+                </Button>
+            </Link>
+        </nav>
+        <div className="md:hidden">
+             {pathname === '/transfer' ? (
+                 <Link href="/transfer">
+                    <Button variant="outline" size="icon">
+                        <Send />
+                    </Button>
+                 </Link>
+             ) : pathname === '/exchange' ? (
+                <Link href="/exchange">
+                    <Button variant="outline" size="icon">
+                        <Repeat />
+                    </Button>
+                </Link>
+             ) : null}
+        </div>
       </div>
     </header>
   );
